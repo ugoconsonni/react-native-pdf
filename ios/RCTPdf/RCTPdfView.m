@@ -98,7 +98,13 @@ const float MIN_SCALE = 1.0f;
 
     return self;
 }
-
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    _onChange(@{ @"message":
+                     [[NSString alloc] initWithString:
+                      [NSString stringWithFormat:
+                       @"onScroll|%s", scrollView.contentOffset.y]] });
+}
 - (void)PDFViewWillClickOnLink:(PDFView *)sender withURL:(NSURL *)url
 {
     NSString *_url = url.absoluteString;
